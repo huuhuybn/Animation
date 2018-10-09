@@ -18,6 +18,7 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
+    private View appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        appbar = findViewById(R.id.appBar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,13 +49,13 @@ public class Main2Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private boolean isShow = false;
+    private boolean isShow = true;
 
     public void showToolbar() {
         if (!isShow) {
             ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
-                    toolbar, "y", -toolbar.getHeight(), 0);
-            objectAnimator.setDuration(2000);
+                    appbar, "y", -appbar.getHeight(), 0);
+            objectAnimator.setDuration(1000);
             objectAnimator.start();
             isShow = true;
 
@@ -63,8 +65,8 @@ public class Main2Activity extends AppCompatActivity
     public void hideToolbar() {
         if (isShow) {
             ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(
-                    toolbar, "y", 0, -toolbar.getHeight());
-            objectAnimator.setDuration(2000);
+                    appbar, "y", 0, -appbar.getHeight());
+            objectAnimator.setDuration(1000);
             objectAnimator.start();
             isShow = false;
         }
